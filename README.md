@@ -15,3 +15,23 @@ It handles API requests, authentication, and serves data for the frontend.
 ---
 
 ## 📂 Project Structure
+my-portfolio-backend/
+│-- src/
+│ │-- routes/
+│ │-- controllers/
+│ │-- models/
+│ │-- utils/
+│ └-- server.js
+│
+│-- package.json
+│-- .env (not pushed to GitHub)
+│-- README.md
+
+---
+
+## ⚙️ Setup & Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Nandhu-j-0330/my-portfolio-backend.git
+   cd my-portfolio-backend

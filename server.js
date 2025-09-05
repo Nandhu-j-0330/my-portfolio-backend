@@ -5,7 +5,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
+if (!PORT) {
+  console.error('❌ PORT is undefined at runtime on Render.');
+  process.exit(1);
+}
 
 // Middleware
 app.use(cors());

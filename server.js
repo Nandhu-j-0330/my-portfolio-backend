@@ -14,22 +14,6 @@ app.use(express.json());
 // Routes
 const contactRoutes = require("./routes/contacts");
 app.use("/api/contacts", contactRoutes);
-// console.log("MongoDB URI:",process.env.MONGO_URI);
-
-// console.log("Mongo URI env var:", JSON.stringify(process.env.MONGO_URI));
-// if (!process.env.MONGO_URI) {
-//   console.error("❌ MONGO_URI is undefined in deployed environment");
-// } else {
-//   console.log("✅ MONGO_URI length:", process.env.MONGO_URI.length);
-// }
-
-// // ✅ MongoDB Connection using environment variable
-// mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log("✅ MongoDB connected"))
-//   .catch((err) => console.error("❌ MongoDB connection error:", err));
-
-// app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
-
 const rawUri = process.env.MONGO_URI;
 const uri = typeof rawUri === 'string' ? rawUri.trim() : '';
 
@@ -45,10 +29,12 @@ if (!uri.startsWith('mongodb')) {
 console.log('✅ MONGO_URI length:', uri.length);
 mongoose.connect(uri, {
   serverSelectionTimeoutMS: 15000,
-  // useNewUrlParser and useUnifiedTopology no longer needed on modern Mongoose
 }).then(() => console.log('✅ MongoDB connected'))
   .catch(err => {
     console.error('❌ MongoDB connection error:', err);
     process.exit(1);
   });
-
+// ✅ Start the server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
